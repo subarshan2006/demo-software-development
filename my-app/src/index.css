@@ -1,8 +1,235 @@
 :root {
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-  color-scheme: light dark;
+  /*** Color tokens — blue + white/neutral only ***/
+  --bg-base: #ffffff;
+  --bg-soft: #f8fafc;
+  --bg-deep: #0b1220;
+  --blue-primary: #187cff;
+  --blue-hover: #43a1ff;
+  --blue-soft: #b3d9ff;
+  --blue-sky: #b3d9ff;
+  --blue-glow: #43a1ff;
+  --text-on-light: #0f172a;
+  --text-muted: #64748b;
+  --text-on-dark: #e2e8f0;
+  --border-light: #e2e8f0;
+
+  /*** Typography ***/
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, Consolas, monospace;
+
+  /*** Radii + spacing scale (8px) ***/
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2rem;
+  --sp-5: 3rem;
+  --sp-6: 4rem;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-on-light);
+  background: var(--bg-base);
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--blue-primary);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/*** Visible keyboard focus ***/
+:focus-visible {
+  outline: 3px solid var(--blue-glow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--sp-3);
+}
+
+section {
+  padding: var(--sp-6) 0;
+}
+
+.section-soft {
+  background: var(--bg-soft);
+}
+
+.section-deep {
+  background: var(--bg-deep);
+  color: var(--text-on-dark);
+}
+
+/*** Eyebrow / mono tag ***/
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-deep .eyebrow {
+  color: var(--blue-sky);
+}
+
+.eyebrow::before {
+  content: '</>';
+  color: var(--blue-sky);
+}
+
+/*** Signature interaction — scroll-glow text ***/
+.glow-text {
+  background: linear-gradient(
+    90deg,
+    var(--text-on-light) 0%,
+    var(--blue-glow) 45%,
+    var(--blue-sky) 55%,
+    var(--text-on-light) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-position: 100% 0;
+  transition:
+    background-position 0.9s ease-out,
+    text-shadow 0.9s ease-out;
+}
+
+.section-deep .glow-text {
+  background-image: linear-gradient(
+    90deg,
+    var(--text-on-dark) 0%,
+    var(--blue-sky) 45%,
+    var(--blue-sky) 55%,
+    var(--text-on-dark) 100%
+  );
+}
+
+.glow-text.in-view {
+  background-position: 0% 0;
+  text-shadow: 0 0 14px rgba(67, 161, 255, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .glow-text {
+    transition: none;
+    background-position: 0% 0;
+  }
+}
+
+/*** Buttons ***/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--blue-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--blue-hover);
+  box-shadow: 0 10px 24px -8px rgba(24, 124, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-on-light);
+  border-color: var(--border-light);
+}
+
+.btn-ghost:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+}
+
+.btn-ghost-light {
+  background: transparent;
+  color: var(--text-on-dark);
+  border-color: rgba(226, 232, 240, 0.4);
+}
+
+.btn-ghost-light:hover {
+  border-color: var(--blue-sky);
+  color: var(--blue-sky);
+}
+
+/*** Tag / pill ***/
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--blue-primary);
+  background: var(--blue-soft);
+  border-radius: 100px;
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
 }
