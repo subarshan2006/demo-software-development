@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useGlowText } from '../hooks/useGlowText'
 
 const LINKS = {
@@ -22,12 +23,12 @@ export default function Contact() {
         </p>
 
         <div className="contact-cta">
-          <a href="#contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary">
             Get free consultation
-          </a>
-          <a href="#portfolio" className="btn btn-ghost">
+          </Link>
+          <Link to="/portfolio" className="btn btn-ghost">
             Audit an existing product
-          </a>
+          </Link>
         </div>
 
         <div className="contact-meta">
@@ -40,9 +41,9 @@ export default function Contact() {
       <footer className="footer">
         <div className="container footer-grid">
           <div className="footer-brand">
-            <a href="#top" className="brand brand-light">
+            <Link to="/" className="brand brand-light">
               Blinking<span>Soft</span>
-            </a>
+            </Link>
             <p>
               Software delivery, under control. Web, mobile, cloud and AI
               workflow engineering for teams in Coimbatore, Chennai and
@@ -56,7 +57,7 @@ export default function Contact() {
               <ul>
                 {items.map((item) => (
                   <li key={item}>
-                    <a href="#top">{item}</a>
+                    <Link to={`/${item.toLowerCase().replace(/ /g, '-')}`}>{item}</Link>
                   </li>
                 ))}
               </ul>
@@ -67,9 +68,9 @@ export default function Contact() {
         <div className="container footer-bottom">
           <span>© 2026 Blinking Soft. All rights reserved.</span>
           <div className="footer-legal">
-            <a href="#top">Privacy Policy</a>
-            <a href="#top">Terms</a>
-            <a href="#top">Sitemap</a>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms</Link>
+            <Link to="/sitemap">Sitemap</Link>
           </div>
         </div>
       </footer>
