@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { useGlowText } from '../hooks/useGlowText'
 
@@ -38,12 +39,12 @@ export default function Hero() {
         </p>
 
         <div className="hero-cta">
-          <a href="#contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary">
             Get free consultation
-          </a>
-          <a href="#portfolio" className="btn btn-ghost">
+          </Link>
+          <Link to="/portfolio" className="btn btn-ghost">
             View work
-          </a>
+          </Link>
         </div>
 
         <p className="hero-trust">

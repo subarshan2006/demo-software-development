@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { useGlowText } from '../hooks/useGlowText'
 
@@ -30,9 +31,9 @@ export default function Delivery() {
             We work from Coimbatore with clients in Chennai and Australia,
             delivering practical software through a clear build process.
           </p>
-          <a href="#contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary">
             Explore delivery
-          </a>
+          </Link>
         </div>
 
         <div className="delivery-points">

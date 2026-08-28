@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { useGlowText } from '../hooks/useGlowText'
 
@@ -202,9 +203,9 @@ export default function Process() {
               <span className="proc-num">{proc.num}</span>
               <h3>{proc.title}</h3>
               <p>{proc.desc}</p>
-              <a href="#contact" className="proc-link">
+              <Link to="/contact" className="proc-link">
                 {proc.link} →
-              </a>
+              </Link>
             </div>
           ))}
         </div>

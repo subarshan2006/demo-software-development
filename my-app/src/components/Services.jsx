@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { useGlowText } from '../hooks/useGlowText'
 
@@ -68,12 +69,12 @@ export default function Services() {
               assumptions before committing engineering budget.
             </p>
           </div>
-          <a href="#contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary">
             Map the scope
-          </a>
-          <a href="#process" className="btn btn-ghost">
+          </Link>
+          <Link to="/process" className="btn btn-ghost">
             Explore all services
-          </a>
+          </Link>
         </div>
       </div>
     </section>
