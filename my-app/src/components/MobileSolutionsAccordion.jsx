@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const COLUMNS = [
@@ -7,17 +8,17 @@ const COLUMNS = [
       {
         title: 'Startup MVPs',
         desc: 'Investor-ready scope without building every idea',
-        href: '#startup-mvps',
+        href: '/solutions/startup-mvps',
       },
       {
         title: 'SaaS Platforms',
         desc: 'Tenants, roles, billing states and admin evidence',
-        href: '#saas-platforms',
+        href: '/solutions/saas-platforms',
       },
       {
         title: 'Internal Tools',
         desc: 'Approvals, queues, dashboards and audit trails',
-        href: '#internal-tools',
+        href: '/solutions/internal-tools',
       },
     ],
   },
@@ -27,17 +28,17 @@ const COLUMNS = [
       {
         title: 'AI Workflow Automation',
         desc: 'Human-reviewed automations for repeated work',
-        href: '#ai-workflow-automation',
+        href: '/solutions/ai-workflow-automation',
       },
       {
         title: 'Data Dashboard Build',
         desc: 'Traceable metrics, source data and owner views',
-        href: '#data-dashboard-build',
+        href: '/solutions/data-dashboard-build',
       },
       {
         title: 'Software Modernization',
         desc: 'Stabilize legacy workflows before replacement',
-        href: '#software-modernization',
+        href: '/solutions/software-modernization',
       },
     ],
   },
@@ -47,22 +48,22 @@ const COLUMNS = [
       {
         title: 'Support Retainers',
         desc: 'Planned care for bugs, changes and release risk',
-        href: '#support-retainers',
+        href: '/solutions/support-retainers',
       },
       {
         title: 'Legacy App Rescue',
         desc: 'Recover brittle products without panic rewrites',
-        href: '#legacy-app-rescue',
+        href: '/solutions/legacy-app-rescue',
       },
       {
         title: 'Cloud Cost Control',
         desc: 'Budgets, logs and waste removal for live systems',
-        href: '#cloud-cost-control',
+        href: '/solutions/cloud-cost-control',
       },
       {
         title: 'Maintenance Plans',
         desc: 'Care plans for live products',
-        href: '#maintenance-plans',
+        href: '/solutions/maintenance-plans',
       },
     ],
   },
@@ -112,8 +113,8 @@ export default function MobileSolutionsAccordion({ onClose }) {
             <ul className="mobile-accordion-list" role="list">
               {col.items.map((item) => (
                 <li key={item.title}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="mobile-accordion-item"
                     onClick={onClose}
                   >
@@ -123,7 +124,7 @@ export default function MobileSolutionsAccordion({ onClose }) {
                     <span className="mobile-accordion-item-desc">
                       {item.desc}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
 
 const COLUMNS = [
@@ -7,27 +8,27 @@ const COLUMNS = [
       {
         title: 'Engineering Blog',
         desc: 'Original notes on product delivery',
-        href: '#blog',
+        href: '/resources/blog',
       },
       {
         title: 'Build Guides',
         desc: 'Planning checklists for founders and teams',
-        href: '#guides',
+        href: '/resources/guides',
       },
       {
         title: 'Delivery Playbook',
         desc: 'Release, support and maintenance practice',
-        href: '#playbook',
+        href: '/resources/playbook',
       },
       {
         title: 'Resource Library',
         desc: 'Templates, checklists and worksheets',
-        href: '#library',
+        href: '/resources/library',
       },
       {
         title: 'FAQ',
         desc: 'Answers about estimates and process',
-        href: '#faq',
+        href: '/resources/faq',
       },
     ],
   },
@@ -37,22 +38,22 @@ const COLUMNS = [
       {
         title: 'Technology Notes',
         desc: 'Articles by engineering topic',
-        href: '#tech-notes',
+        href: '/resources/tech-notes',
       },
       {
         title: 'Technology Stack',
         desc: 'React, Node, Flutter, cloud and data choices',
-        href: '#tech-stack',
+        href: '/resources/tech-stack',
       },
       {
         title: 'Integrations',
         desc: 'Payments, CRM, maps, analytics and auth',
-        href: '#integrations',
+        href: '/resources/integrations',
       },
       {
         title: 'Locations',
         desc: 'Coimbatore, Chennai and Australia delivery',
-        href: '#locations',
+        href: '/resources/locations',
       },
     ],
   },
@@ -62,22 +63,22 @@ const COLUMNS = [
       {
         title: 'About Us',
         desc: 'How Blinking Soft works',
-        href: '#about',
+        href: '/resources/about',
       },
       {
         title: 'Process',
         desc: 'Delivery rhythm and review model',
-        href: '#process',
+        href: '/resources/process',
       },
       {
         title: 'Case Studies',
         desc: 'Project stories and outcomes',
-        href: '#case-studies',
+        href: '/resources/case-studies',
       },
       {
         title: 'Careers',
         desc: 'Join the engineering team',
-        href: '#careers',
+        href: '/resources/careers',
       },
     ],
   },
@@ -125,10 +126,10 @@ export default function ResourcesMegaMenu({ open, onClose }) {
                 <ul className="mega-list" role="list">
                   {col.items.map((item) => (
                     <li key={item.title}>
-                      <a href={item.href} className="mega-item" onClick={onClose}>
+                      <Link to={item.href} className="mega-item" onClick={onClose}>
                         <span className="mega-item-title">{item.title}</span>
                         <span className="mega-item-desc">{item.desc}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -142,16 +143,16 @@ export default function ResourcesMegaMenu({ open, onClose }) {
               <p className="mega-promo-text">
                 Use the integration hub to plan payments, CRM, ERP, maps, notifications, analytics and identity work.
               </p>
-              <a href="#integration-hub" className="mega-promo-btn" onClick={onClose}>
+              <Link to="/resources/integration-hub" className="mega-promo-btn" onClick={onClose}>
                 Open integration hub
-              </a>
+              </Link>
             </div>
           </div>
 
           <div className="mega-footer">
-            <a href="#library" className="mega-explore" onClick={onClose}>
+            <Link to="/resources/library" className="mega-explore" onClick={onClose}>
               Open resource library <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
 
 const COLUMNS = [
@@ -7,22 +8,22 @@ const COLUMNS = [
       {
         title: 'Healthcare',
         desc: 'Care coordination and patient workflows',
-        href: '#healthcare',
+        href: '/industries/healthcare',
       },
       {
         title: 'E-commerce',
         desc: 'Stores, payments and order operations',
-        href: '#ecommerce',
+        href: '/industries/ecommerce',
       },
       {
         title: 'Travel',
         desc: 'Booking, inventory and support flows',
-        href: '#travel',
+        href: '/industries/travel',
       },
       {
         title: 'Education',
         desc: 'Learning, cohorts and admin portals',
-        href: '#education',
+        href: '/industries/education',
       },
     ],
   },
@@ -32,17 +33,17 @@ const COLUMNS = [
       {
         title: 'Real Estate',
         desc: 'Listings, enquiries and broker workflows',
-        href: '#real-estate',
+        href: '/industries/real-estate',
       },
       {
         title: 'Finance',
         desc: 'Dashboards, approvals and audit-ready data',
-        href: '#finance',
+        href: '/industries/finance',
       },
       {
         title: 'Logistics',
         desc: 'Routing, tracking and exception handling',
-        href: '#logistics',
+        href: '/industries/logistics',
       },
     ],
   },
@@ -52,12 +53,12 @@ const COLUMNS = [
       {
         title: 'Manufacturing',
         desc: 'Production, inventory and reporting tools',
-        href: '#manufacturing',
+        href: '/industries/manufacturing',
       },
       {
         title: 'Professional Services',
         desc: 'Client portals, reporting and workflow systems',
-        href: '#professional-services',
+        href: '/industries/professional-services',
       },
     ],
   },
@@ -105,10 +106,10 @@ export default function IndustriesMegaMenu({ open, onClose }) {
                 <ul className="mega-list" role="list">
                   {col.items.map((item) => (
                     <li key={item.title}>
-                      <a href={item.href} className="mega-item" onClick={onClose}>
+                      <Link to={item.href} className="mega-item" onClick={onClose}>
                         <span className="mega-item-title">{item.title}</span>
                         <span className="mega-item-desc">{item.desc}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -122,16 +123,16 @@ export default function IndustriesMegaMenu({ open, onClose }) {
               <p className="mega-promo-text">
                 Portfolio notes show how business workflows become web, mobile and cloud software.
               </p>
-              <a href="#portfolio" className="mega-promo-btn" onClick={onClose}>
+              <Link to="/portfolio" className="mega-promo-btn" onClick={onClose}>
                 View portfolio
-              </a>
+              </Link>
             </div>
           </div>
 
           <div className="mega-footer">
-            <a href="#industries" className="mega-explore" onClick={onClose}>
+            <Link to="/industries" className="mega-explore" onClick={onClose}>
               Explore all industries <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

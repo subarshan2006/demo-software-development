@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import MegaMenu from './MegaMenu'
 import SolutionsMegaMenu from './SolutionsMegaMenu'
 import IndustriesMegaMenu from './IndustriesMegaMenu'
@@ -18,12 +19,13 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('')
-  /* null | 'services' | 'solutions' */
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const hoverTimeout = useRef(null)
   const navRef = useRef(null)
+  const location = useLocation()
+  
+  const active = location.pathname.substring(1) || ''
 
   const closeAll = useCallback(() => setActiveDropdown(null), [])
   const closeMobile = useCallback(() => setMobileOpen(false), [])
@@ -34,23 +36,6 @@ export default function Navbar() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  /* section observer */
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { rootMargin: '-45% 0px -45% 0px' },
-    )
-    document
-      .querySelectorAll('section[id]')
-      .forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
   }, [])
 
   /* close mobile menu on resize to desktop */
@@ -134,9 +119,9 @@ export default function Navbar() {
       >
         <div className="nav-inner container">
           {/* Logo */}
-          <a href="#top" className="brand">
+          <Link to="/" className="brand">
             Blinking<span>Soft</span>
-          </a>
+          </Link>
 
           {/* Desktop nav links */}
           <nav className="nav-links" aria-label="Primary">
@@ -152,7 +137,7 @@ export default function Navbar() {
                   >
                     <button
                       className={`nav-link nav-link-btn ${
-                        active === item.id ? 'active' : ''
+                        location.pathname.startsWith(`/${item.id}`) ? 'active' : ''
                       } ${activeDropdown === item.megaKey ? 'mega-active' : ''}`}
                       onClick={() => toggleDropdown(item.megaKey)}
                       aria-expanded={activeDropdown === item.megaKey}
@@ -166,14 +151,14 @@ export default function Navbar() {
               }
               /* Plain links (with or without a future dropdown chevron) */
               return (
-                <a
+                <Link
                   key={item.id}
-                  href={`#${item.id}`}
-                  className={`nav-link ${active === item.id ? 'active' : ''}`}
+                  to={`/${item.id}`}
+                  className={`nav-link ${location.pathname.startsWith(`/${item.id}`) ? 'active' : ''}`}
                 >
                   {item.label}
                   {item.hasDropdown && dropdownChevron}
-                </a>
+                </Link>
               )
             })}
           </nav>
@@ -183,9 +168,9 @@ export default function Navbar() {
             <a href="tel:+1234567890" className="nav-call">
               Call us
             </a>
-            <a href="#contact" className="btn btn-primary nav-cta">
+            <Link to="/contact" className="btn btn-primary nav-cta">
               Get consultation <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
 
           {/* Hamburger */}
@@ -250,27 +235,27 @@ export default function Navbar() {
           </div>
 
           {NAV_ITEMS.filter((item) => !item.megaKey).map((item) => (
-            <a
+            <Link
               key={item.id}
-              href={`#${item.id}`}
+              to={`/${item.id}`}
               className="mobile-nav-link"
               onClick={closeMobile}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
 
           <div className="mobile-nav-actions">
             <a href="tel:+1234567890" className="nav-call mobile-call">
               Call us
             </a>
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="btn btn-primary mobile-cta"
               onClick={closeMobile}
             >
               Get consultation <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

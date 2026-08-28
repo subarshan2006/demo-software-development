@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const COLUMNS = [
@@ -7,27 +8,27 @@ const COLUMNS = [
       {
         title: 'Engineering Blog',
         desc: 'Original notes on product delivery',
-        href: '#blog',
+        href: '/resources/blog',
       },
       {
         title: 'Build Guides',
         desc: 'Planning checklists for founders and teams',
-        href: '#guides',
+        href: '/resources/guides',
       },
       {
         title: 'Delivery Playbook',
         desc: 'Release, support and maintenance practice',
-        href: '#playbook',
+        href: '/resources/playbook',
       },
       {
         title: 'Resource Library',
         desc: 'Templates, checklists and worksheets',
-        href: '#library',
+        href: '/resources/library',
       },
       {
         title: 'FAQ',
         desc: 'Answers about estimates and process',
-        href: '#faq',
+        href: '/resources/faq',
       },
     ],
   },
@@ -37,22 +38,22 @@ const COLUMNS = [
       {
         title: 'Technology Notes',
         desc: 'Articles by engineering topic',
-        href: '#tech-notes',
+        href: '/resources/tech-notes',
       },
       {
         title: 'Technology Stack',
         desc: 'React, Node, Flutter, cloud and data choices',
-        href: '#tech-stack',
+        href: '/resources/tech-stack',
       },
       {
         title: 'Integrations',
         desc: 'Payments, CRM, maps, analytics and auth',
-        href: '#integrations',
+        href: '/resources/integrations',
       },
       {
         title: 'Locations',
         desc: 'Coimbatore, Chennai and Australia delivery',
-        href: '#locations',
+        href: '/resources/locations',
       },
     ],
   },
@@ -62,22 +63,22 @@ const COLUMNS = [
       {
         title: 'About Us',
         desc: 'How Blinking Soft works',
-        href: '#about',
+        href: '/resources/about',
       },
       {
         title: 'Process',
         desc: 'Delivery rhythm and review model',
-        href: '#process',
+        href: '/resources/process',
       },
       {
         title: 'Case Studies',
         desc: 'Project stories and outcomes',
-        href: '#case-studies',
+        href: '/resources/case-studies',
       },
       {
         title: 'Careers',
         desc: 'Join the engineering team',
-        href: '#careers',
+        href: '/resources/careers',
       },
     ],
   },
@@ -127,8 +128,8 @@ export default function MobileResourcesAccordion({ onClose }) {
             <ul className="mobile-accordion-list" role="list">
               {col.items.map((item) => (
                 <li key={item.title}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="mobile-accordion-item"
                     onClick={onClose}
                   >
@@ -138,7 +139,7 @@ export default function MobileResourcesAccordion({ onClose }) {
                     <span className="mobile-accordion-item-desc">
                       {item.desc}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

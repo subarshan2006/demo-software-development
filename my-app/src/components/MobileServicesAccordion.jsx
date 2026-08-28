@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef, useEffect, useState } from 'react'
 
 const COLUMNS = [
@@ -7,22 +8,22 @@ const COLUMNS = [
       {
         title: 'Web Development',
         desc: 'Role-based portals, dashboards and SaaS screens',
-        href: '#web-development',
+        href: '/services/web-development',
       },
       {
         title: 'Mobile Apps',
         desc: 'Flutter releases, API contracts and device states',
-        href: '#mobile-apps',
+        href: '/services/mobile-apps',
       },
       {
         title: 'UI/UX Design',
         desc: 'Operational flows, edge cases and design systems',
-        href: '#ui-ux-design',
+        href: '/services/ui-ux-design',
       },
       {
         title: 'Product Discovery',
         desc: 'Workflow maps, risk register and estimate inputs',
-        href: '#product-discovery',
+        href: '/services/product-discovery',
       },
     ],
   },
@@ -32,22 +33,22 @@ const COLUMNS = [
       {
         title: 'API Development',
         desc: 'Versioned contracts, webhooks and admin actions',
-        href: '#api-development',
+        href: '/services/api-development',
       },
       {
         title: 'Cloud Solutions',
         desc: 'Environments, scaling, backups and observability',
-        href: '#cloud-solutions',
+        href: '/services/cloud-solutions',
       },
       {
         title: 'DevOps Services',
         desc: 'Pipelines, secrets, rollback and deployment evidence',
-        href: '#devops-services',
+        href: '/services/devops-services',
       },
       {
         title: 'QA Engineering',
         desc: 'Regression suites, UAT paths and launch gates',
-        href: '#qa-engineering',
+        href: '/services/qa-engineering',
       },
     ],
   },
@@ -57,27 +58,27 @@ const COLUMNS = [
       {
         title: 'AI Automation',
         desc: 'Review queues, assistants and governed workflow help',
-        href: '#ai-automation',
+        href: '/services/ai-automation',
       },
       {
         title: 'Data Engineering',
         desc: 'Event quality, reporting models and decision data',
-        href: '#data-engineering',
+        href: '/services/data-engineering',
       },
       {
         title: 'Performance Engineering',
         desc: 'Core Web Vitals, API latency and budgets',
-        href: '#performance-engineering',
+        href: '/services/performance-engineering',
       },
       {
         title: 'Security and Compliance',
         desc: 'Access control, audit trails and data handling',
-        href: '#security-compliance',
+        href: '/services/security-compliance',
       },
       {
         title: 'Maintenance',
         desc: 'Incident fixes, refactors and improvement cycles',
-        href: '#maintenance',
+        href: '/services/maintenance',
       },
     ],
   },
@@ -127,8 +128,8 @@ export default function MobileServicesAccordion({ onClose }) {
             <ul className="mobile-accordion-list" role="list">
               {col.items.map((item) => (
                 <li key={item.title}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="mobile-accordion-item"
                     onClick={onClose}
                   >
@@ -138,7 +139,7 @@ export default function MobileServicesAccordion({ onClose }) {
                     <span className="mobile-accordion-item-desc">
                       {item.desc}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
