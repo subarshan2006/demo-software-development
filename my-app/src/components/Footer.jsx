@@ -33,7 +33,7 @@ export default function Footer() {
                   linkPath = `/solutions/${item.toLowerCase().replace(/\/|\s+/g, '-')}`;
                 } else if (heading === 'Company') {
                   linkPath = `/resources/${item.toLowerCase().replace(/\/|\s+/g, '-')}`;
-                  if (item === 'Contact') linkPath = '/contact';
+                  if (item === 'Contact') linkPath = '/get-consultant';
                   if (item === 'Portfolio') linkPath = '/portfolio';
                 } else {
                   linkPath = `/${item.toLowerCase().replace(/\/|\s+/g, '-')}`;

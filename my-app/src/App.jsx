@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './Layout'
 import HomePage from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
@@ -6,7 +6,7 @@ import SolutionsPage from './pages/SolutionsPage'
 import IndustriesPage from './pages/IndustriesPage'
 import ResourcesPage from './pages/ResourcesPage'
 import PortfolioPage from './pages/PortfolioPage'
-import ContactPage from './pages/ContactPage'
+import GetConsultantPage from './pages/GetConsultantPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
@@ -69,7 +69,8 @@ export default function App() {
           <Route path="industries" element={<IndustriesPage />} />
           <Route path="resources" element={<ResourcesPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
-          <Route path="contact" element={<ContactPage />} />
+          <Route path="contact" element={<Navigate to="/get-consultant" replace />} />
+          <Route path="get-consultant" element={<GetConsultantPage />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="services/web-development" element={<WebDevelopment />} />
           <Route path="services/mobile-apps" element={<MobileApps />} />

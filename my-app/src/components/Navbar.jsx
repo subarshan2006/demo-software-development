@@ -168,7 +168,7 @@ export default function Navbar() {
             <a href="tel:+1234567890" className="nav-call">
               Call us
             </a>
-            <Link to="/contact" className="btn btn-primary nav-cta">
+            <Link to="/get-consultant" className="btn btn-primary nav-cta">
               Get consultation <span aria-hidden="true">→</span>
             </Link>
           </div>
@@ -250,7 +250,7 @@ export default function Navbar() {
               Call us
             </a>
             <Link
-              to="/contact"
+              to="/get-consultant"
               className="btn btn-primary mobile-cta"
               onClick={closeMobile}
             >

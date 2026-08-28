@@ -23,7 +23,7 @@ export default function Contact() {
         </p>
 
         <div className="contact-cta">
-          <Link to="/contact" className="btn btn-primary">
+          <Link to="/get-consultant" className="btn btn-primary">
             Get free consultation
           </Link>
           <Link to="/portfolio" className="btn btn-ghost">
